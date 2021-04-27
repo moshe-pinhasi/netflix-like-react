@@ -1,0 +1,9 @@
+.movie-card {
+  display: inline-block;
+  width: 160px;
+  // max-width: 345px;
+
+  .movie-card-media {
+    height: 240px;
+  }
+}

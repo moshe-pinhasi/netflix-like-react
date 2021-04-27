@@ -1,0 +1,40 @@
+@import '../../assets/scss/variables.scss';
+
+.side-nav {
+  
+}
+
+.drawer-paper {
+
+  a {
+    text-transform: uppercase;
+  }
+  
+  &.MuiDrawer-paper {
+    width: 240px;
+    background-color: $color-secondery;
+  }
+
+  .side-nav-color {
+    color: $color-white;
+  }
+
+  .side-nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &.move-right {
+      justify-content: flex-end;
+    }
+  }
+
+
+  .side-nav-link-selected {
+    color: $color-primary;
+  }
+
+  .MuiDivider-root {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}

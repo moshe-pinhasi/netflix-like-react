@@ -12,6 +12,16 @@ import './MovieCard.scss';
 
 function MovieCard({movie, children}) {
 
+  const renderActions = () => {
+    if (!children) return ""
+
+    return (
+      <CardActions>
+        {children}
+      </CardActions>
+    )
+  }
+
   return (
     <Card className="movie-card">
       <CardActionArea>
@@ -21,9 +31,9 @@ function MovieCard({movie, children}) {
           title={movie.title}
         />
       </CardActionArea>
-      <CardActions>
-        {children}
-      </CardActions>
+      {renderActions()}
+
+      
     </Card>
   );
 }

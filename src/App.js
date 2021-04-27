@@ -3,16 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
   Redirect,
 } from "react-router-dom";
 
-import {SideNav} from './common'
+import {SideNav, AppHeader} from './common'
 import {Dashboard, Movies, MyMovies, Settings} from './views'
-
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
 import './App.scss';
 
@@ -33,33 +28,7 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <header className="app-header">
-          <NavLink to="/dashboard">dashboard</NavLink>
-          <NavLink to="/my-movies">my-movies</NavLink>
-          <NavLink to="/movies">movies</NavLink>
-          <NavLink to="/settings">settings</NavLink>
-
-          <Hidden smUp implementation="css">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer(true)}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-
-          <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer(true)}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-        </header>
-
+        <AppHeader toggleDrawer={toggleDrawer} />
         <div className="app-content">
           <Switch>
             <Route path="/dashboard"><Dashboard /></Route>

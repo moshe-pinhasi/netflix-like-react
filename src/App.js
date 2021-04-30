@@ -12,6 +12,9 @@ import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'
 
+import {theme} from './assets/theme'
+import {ThemeProvider} from '@material-ui/core/styles';
+
 import './App.scss';
 
 const loggedInUser = storage.load('user')
@@ -48,32 +51,34 @@ function App() {
 
   return (
     <div className="app">
-      <UserContext.Provider value={user}>
-        <Router>
-          <SearchContext.Provider value={showSearch}>
-            <AppHeader toggleDrawer={toggleDrawer} 
-                       handleLogin={() => openLoginModel(true)}
-                       handleLogout={onLogout}/>
-          </SearchContext.Provider>
-          <div className="app-content">
-            <Switch>
-              <Route path="/dashboard"><Dashboard  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-              <Route path="/movies"><Movies searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-              <Route path="/my-movies"><MyMovies searchVisibilty={() => setSearchVisibilty(true)}/></Route>
-              <Route path="/settings"><Settings searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-              <Redirect to='/dashboard' />
-            </Switch>
-          </div>
+      <ThemeProvider theme={theme}>
+        <UserContext.Provider value={user}>
+          <Router>
+            <SearchContext.Provider value={showSearch}>
+              <AppHeader toggleDrawer={toggleDrawer} 
+                        handleLogin={() => openLoginModel(true)}
+                        handleLogout={onLogout}/>
+            </SearchContext.Provider>
+            <div className="app-content">
+              <Switch>
+                <Route path="/dashboard"><Dashboard  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route path="/movies"><Movies searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route path="/my-movies"><MyMovies searchVisibilty={() => setSearchVisibilty(true)}/></Route>
+                <Route path="/settings"><Settings searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Redirect to='/dashboard' />
+              </Switch>
+            </div>
 
-          <SideNav show={state.mobileOpen} closeDrawer={toggleDrawer(false)}/>
-        </Router>
-      </UserContext.Provider>
+            <SideNav show={state.mobileOpen} closeDrawer={toggleDrawer(false)}/>
+          </Router>
+        </UserContext.Provider>
 
-      {showLoginModal && 
-        (<LoginModal show={showLoginModal} 
-                  handleClose={() => openLoginModel(false)}
-                  handleSubmit={onLogin}/>)
-      }
+        {showLoginModal && 
+          (<LoginModal show={showLoginModal} 
+                    handleClose={() => openLoginModel(false)}
+                    handleSubmit={onLogin}/>)
+        }
+      </ThemeProvider>
     </div>
   );
 }

@@ -1,6 +1,13 @@
 import {useState} from 'react'
 
-import { Modal, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import { 
+  Modal, 
+  FormControl, 
+  InputLabel, 
+  Input,
+  FormHelperText, 
+  Button 
+} from '@material-ui/core';
 
 import './LoginModal.scss';
 
@@ -47,7 +54,7 @@ function LoginModal({show, handleClose, handleSubmit}) {
         </div>
         
         <div className="form-actions-container">
-          <button type="submit" onClick={submit}>Submit</button>
+          <Button color="primary" variant="contained" onClick={submit}>Login</Button>
         </div>
       </form>
     </div>

@@ -2,7 +2,7 @@ import MovieCard from '../MovieCard';
 
 import './MovieList.scss';
 
-function MovieList({movies}) {
+function MovieList({movies, vertical}) {
   const renderList = () => {
     return movies.map(m => 
       <li className="list-item" key={m.id}>
@@ -12,7 +12,7 @@ function MovieList({movies}) {
   }
 
   return (
-    <ul className="movie-list">
+    <ul className={"movie-list " + (vertical ? 'vertical' : '')}>
       {renderList()}
     </ul>
   );

@@ -1,15 +1,20 @@
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
 
 .app-header {
   position: fixed;
   z-index: 10;
   width: 100%;
-  height: 60px;
+  height: 64px;
   background-color: $color-black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+
+  @include respond(phone) {
+    padding: 0 4px 0px 12px;
+  }
 
   .app-header-nav {
     a {
@@ -20,15 +25,23 @@
 
   .app-header-search {
     flex: 1;
-    background-color: blueviolet;
+    padding: 0 20px;
+
+    @include respond(phone) {
+      padding: 0 0 0 3px;
+    }
   }
 
   .app-header-actions {
     display: flex;
-    
-    li {
-      margin: 0 7px;
-    }
+    align-items: center;
+    height: 100%;
   }
 
+}
+
+.user-menu {
+  a:visited {
+    color: rgba(0, 0, 0, 0.87);
+  }
 }

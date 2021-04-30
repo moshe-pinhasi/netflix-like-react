@@ -1,3 +1,37 @@
+@import '../../assets/scss/variables.scss';
+
 .search-input {
-  
+    position: relative;
+    border-radius: 4px;
+    padding: 0 7px;
+    width: 100%;
+    max-width: 250px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.15);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .search-icon {
+      padding: 0 2px;
+      height: 100%;
+      position: absolute;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-grey-light-2;
+    }
+    
+    .input-root {
+      color: inherit;
+      height: 100%;
+    }
+
+    .input-input {
+      padding: 1px 1px 1px 0;
+      padding-left: 35px;
+      width: 100%;
+    }
 }

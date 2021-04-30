@@ -20,7 +20,7 @@ function MyMovies({searchVisibilty}) {
 
   return (
     <div className="my-movies">
-      <MovieList movies={state.data.results} />
+      <MovieList movies={state.data.results} vertical={true} />
       <button onClick={nexPage}>next page</button>
     </div>
   );

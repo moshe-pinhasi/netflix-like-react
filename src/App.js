@@ -8,7 +8,7 @@ import {
 
 import {SideNav, AppHeader, LoginModal} from './common'
 import {Dashboard, Movies, MyMovies, Settings} from './views'
-import storage from './services/storage'
+import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'
 

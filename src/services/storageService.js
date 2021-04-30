@@ -9,7 +9,7 @@ const load = (name) => {
   return JSON.parse(data)
 }
 
-export default {
+export const storage = {
   save,
   load
 }

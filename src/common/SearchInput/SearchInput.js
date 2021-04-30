@@ -1,6 +1,6 @@
 import './SearchInput.scss'
 
-function SearchInput({}){
+function SearchInput(){
   return (
     <input className="seach-input" placeholder="Search" />
   )

@@ -1,5 +1,3 @@
-import {NavLink} from "react-router-dom";
-
 import './SearchInput.scss'
 
 function SearchInput({}){

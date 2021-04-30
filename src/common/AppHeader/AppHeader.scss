@@ -17,4 +17,18 @@
       margin: 0 7px;
     }
   }
+
+  .app-header-search {
+    flex: 1;
+    background-color: blueviolet;
+  }
+
+  .app-header-actions {
+    display: flex;
+    
+    li {
+      margin: 0 7px;
+    }
+  }
+
 }

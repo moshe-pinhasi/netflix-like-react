@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {MovieList} from '../../common';
 
@@ -6,7 +6,7 @@ import {useDataApi, getConfig} from '../../hooks/useDataApi'
 
 import './Movies.scss';
 
-function Movies() {
+function Movies({searchVisibilty}) {
   const initialTopRatedConfig = getConfig('/movie/top_rated', {page: 1})
   const [topRatedState, setTopRatedConfig] = useDataApi(initialTopRatedConfig, {results: [], page: 1})
 
@@ -19,6 +19,8 @@ function Movies() {
   const initialNowPlayingConfig = getConfig('/movie/now_playing', {page: 1})
   const [nowPlayingState, setNowPlayingConfig] = useDataApi(initialNowPlayingConfig, {results: [], page: 1})
 
+  useEffect(searchVisibilty)
+
   const renderList = (title, movies) => {
     return (
       <div className="list-container">
@@ -27,7 +29,7 @@ function Movies() {
       </div>
     )
   }
-  
+
   return (
     <div className="movies">
       {renderList("Top Rated", topRatedState.data.results)}

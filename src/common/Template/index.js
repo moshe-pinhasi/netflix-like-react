@@ -1,3 +1,3 @@
-import Dashboard from './Template'
+import Template from './Template'
 
-export {Dashboard}
+export default Template

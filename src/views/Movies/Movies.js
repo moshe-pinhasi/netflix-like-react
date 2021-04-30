@@ -19,20 +19,21 @@ function Movies() {
   const initialNowPlayingConfig = getConfig('/movie/now_playing', {page: 1})
   const [nowPlayingState, setNowPlayingConfig] = useDataApi(initialNowPlayingConfig, {results: [], page: 1})
 
-
+  const renderList = (title, movies) => {
+    return (
+      <div className="list-container">
+        <h2>{title}</h2>
+        <MovieList movies={movies} />
+      </div>
+    )
+  }
+  
   return (
     <div className="movies">
-      <label>Top Rated</label>
-      <MovieList movies={topRatedState.data.results} />
-
-      <label>Upcoming</label>
-      <MovieList movies={upcomingState.data.results} />
-
-      <label>Popular</label>
-      <MovieList movies={popularState.data.results} />
-
-      <label>Now Playing</label>
-      <MovieList movies={nowPlayingState.data.results} />
+      {renderList("Top Rated", topRatedState.data.results)}
+      {renderList("Upcoming", upcomingState.data.results)}
+      {renderList("Popular", popularState.data.results)}
+      {renderList("Now Playing", nowPlayingState.data.results)}
     </div>
   );
 }

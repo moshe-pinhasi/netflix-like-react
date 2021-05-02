@@ -39,5 +39,6 @@ a {
   &:hover, 
   &:active {
     text-decoration: none;
+    color: inherit;
   }
 }

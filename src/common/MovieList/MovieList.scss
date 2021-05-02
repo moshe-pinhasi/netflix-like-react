@@ -1,7 +1,8 @@
 .movie-list {
   display: flex;
   overflow: scroll;
-
+  padding: 20px;
+  
   &.vertical {
     flex-wrap: wrap;
   }

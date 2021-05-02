@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Link} from "react-router-dom";
 
 import {MovieList} from '../../common';
 
@@ -21,10 +22,10 @@ function Movies({searchVisibilty}) {
 
   useEffect(searchVisibilty)
 
-  const renderList = (title, movies) => {
+  const renderList = (title, movies, id) => {
     return (
       <div className="list-container">
-        <h2>{title}</h2>
+        <Link to={{pathname: "/movies/" + id}}><h2>{title}</h2></Link>
         <MovieList movies={movies} />
       </div>
     )
@@ -32,10 +33,10 @@ function Movies({searchVisibilty}) {
 
   return (
     <div className="movies">
-      {renderList("Top Rated", topRatedState.data.results)}
-      {renderList("Upcoming", upcomingState.data.results)}
-      {renderList("Popular", popularState.data.results)}
-      {renderList("Now Playing", nowPlayingState.data.results)}
+      {renderList("Top Rated", topRatedState.data.results, 'top_rated')}
+      {renderList("Upcoming", upcomingState.data.results, 'upcoming')}
+      {renderList("Popular", popularState.data.results, 'popular')}
+      {renderList("Now Playing", nowPlayingState.data.results, 'now_playing')}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import {SideNav, AppHeader, LoginModal} from './common'
-import {Dashboard, Movies, MyMovies, Settings} from './views'
+import {Dashboard, Movies, MyMovies, Settings, MovieCategory} from './views'
 import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'
@@ -62,7 +62,8 @@ function App() {
             <div className="app-content">
               <Switch>
                 <Route path="/dashboard"><Dashboard  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-                <Route path="/movies"><Movies searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route exact path="/movies"><Movies searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route path="/movies/:id"><MovieCategory searchVisibilty={() => setSearchVisibilty(false)}/></Route>
                 <Route path="/my-movies"><MyMovies searchVisibilty={() => setSearchVisibilty(true)}/></Route>
                 <Route path="/settings"><Settings searchVisibilty={() => setSearchVisibilty(false)}/></Route>
                 <Redirect to='/dashboard' />

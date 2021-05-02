@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect, useReducer, useDebugValue } from 'react';
 import axios from 'axios'
 
 const BASE_URL = "https://api.themoviedb.org/3"
@@ -81,6 +81,8 @@ export const useDataApi = (initialConfig, initialData) => {
 
     return () => didCancel = true //clean up function which runs when a component unmounts
   }, [config])
+
+  useDebugValue(state.isLoading ? 'loading' : 'idle'); // display the status in devtools 
 
   return [state, setConfig]
 }

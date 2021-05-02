@@ -4,7 +4,7 @@ import MovieList from './MovieList'
 import AppHeader from './AppHeader'
 import SearchInput from './SearchInput'
 import LoginModal from './LoginModal'
-
+import Alert from './Alert'
 export {
   SideNav,
   MovieCard,
@@ -12,4 +12,5 @@ export {
   AppHeader,
   SearchInput,
   LoginModal,
+  Alert,
 }

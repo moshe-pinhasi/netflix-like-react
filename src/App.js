@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import {SideNav, AppHeader, LoginModal} from './common'
-import {Dashboard, Movies, MyMovies, Settings, MovieCategory} from './views'
+import {Dashboard, Movies, MyMovies, Settings, MovieCategory, MovieDetails} from './views'
 import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'
@@ -34,15 +34,24 @@ function App() {
     setState({ ...state, mobileOpen: open });
   };
 
-  const onLogin = (user) => {
+  const saveUser = (user) => {
     setUser(user)
     storage.save('user', user)
+  }
+
+  const onLogin = (user) => {
+    saveUser(user)
     openLoginModel(false)
   }
 
   const onLogout = () => {
     setUser(null)
     storage.remove('user')
+  }
+
+  const toggleLiked = (movie) => {
+    user.liked[movie.id] ? (delete user.liked[movie.id]) : user.liked[movie.id] = movie
+    saveUser({...user})
   }
 
   return (
@@ -58,8 +67,15 @@ function App() {
             <div className="app-content">
               <Switch>
                 <Route path="/dashboard"><Dashboard  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-                <Route exact path="/movies"><Movies searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route exact path="/movies">
+                  <Movies searchVisibilty={() => setSearchVisibilty(false)}
+                          onToggleLiked={toggleLiked}/>
+                </Route>
                 <Route path="/movies/:id"><MovieCategory searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route path="/movie/:id">
+                  <MovieDetails searchVisibilty={() => setSearchVisibilty(false)}
+                                onToggleLiked={toggleLiked}/>
+                </Route>
                 <Route path="/my-movies"><MyMovies searchVisibilty={() => setSearchVisibilty(true)}/></Route>
                 <Route path="/settings"><Settings searchVisibilty={() => setSearchVisibilty(false)}/></Route>
                 <Redirect to='/dashboard' />

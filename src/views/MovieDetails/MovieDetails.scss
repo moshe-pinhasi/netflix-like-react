@@ -1,0 +1,30 @@
+.movie-details {
+
+  .card {
+    display: flex;
+
+    .card-content {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+
+      .card-content-body {
+        flex: 1;
+      }
+      
+      p, .card-title {
+        margin-bottom: 10px;
+      }
+    }
+
+    .actions-container {
+      display: flex;
+      align-items: center;
+
+      li {
+        cursor: pointer;
+        margin-right: 10px;
+      }
+    }
+  }
+}

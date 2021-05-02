@@ -1,0 +1,38 @@
+.alert {
+  $success-color: #4caf50;
+
+  display: flex;
+  align-items: center;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  border-radius: 4px;
+  letter-spacing: 0.01071em;
+  background-color: transparent;
+  width: max-content;
+  position: fixed;
+  bottom: 30px;
+
+  .alert-icon {
+    display: flex;
+    opacity: 0.9;
+    padding: 7px 0;
+    font-size: 22px;
+    margin-right: 12px;
+  }
+
+  .alert-message {
+    padding: 8px 0;
+  }
+
+  &.severity-success {
+    color: rgb(183, 223, 185);
+    border: 1px solid $success-color; 
+
+    .alert-icon {
+      color: $success-color;
+    }
+  }
+}

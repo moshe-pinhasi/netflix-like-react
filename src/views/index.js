@@ -1,5 +1,6 @@
 import Dashboard from './Dashboard'
 import Movies from './Movies'
+import MovieDetails from './MovieDetails'
 import MyMovies from './MyMovies'
 import Settings from './Settings'
 import MovieCategory from './MovieCategory'
@@ -10,4 +11,5 @@ export {
   MyMovies,
   Settings,
   MovieCategory,
+  MovieDetails,
 }

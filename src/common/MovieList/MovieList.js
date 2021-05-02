@@ -1,12 +1,15 @@
 import MovieCard from '../MovieCard';
-
+import {NavLink} from "react-router-dom";
 import './MovieList.scss';
 
-function MovieList({movies, vertical}) {
+function MovieList({movies, vertical, Actions}) {
   const renderList = () => {
     return movies.map(m => 
       <li className="list-item" key={m.id}>
-        <MovieCard movie={m} />
+        <NavLink to={`/movie/${m.id}`}>
+          <MovieCard movie={m} />
+          {Actions && <div className="list-item-actions"><Actions movie={m} /></div>}
+        </NavLink>
       </li>  
     )
   }

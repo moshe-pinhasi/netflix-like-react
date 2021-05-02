@@ -98,6 +98,7 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
       </Hidden>
 
       <Hidden smDown className="app-header-nav" implementation="css">
+        {user && <span>Hello {user.username}</span>}
         {user && <NavLink to="/dashboard">Dashboard</NavLink>}
         {user && <NavLink to="/my-movies">My Movies</NavLink>}
         <NavLink to="/movies">Movies</NavLink>

@@ -21,7 +21,13 @@
       color: $color-white;
       margin: 0 7px;
     }
+
+    .nav-selected {
+      color: $color-primary;
+    }
   }
+
+  
 
   .app-header-search {
     flex: 1;
@@ -41,8 +47,8 @@
 
 }
 
-.user-menu {
-  a:visited {
-    color: rgba(0, 0, 0, 0.87);
-  }
-}
+// .user-menu {
+//   a:visited {
+//     color: rgba(0, 0, 0, 0.87);
+//   }
+// }

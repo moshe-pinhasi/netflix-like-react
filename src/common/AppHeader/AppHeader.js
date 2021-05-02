@@ -13,7 +13,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import Favorite from '@material-ui/icons/Favorite';
 
 import './AppHeader.scss'
 
@@ -45,7 +45,9 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
       onClose={handleMenuClose}
       className="user-menu"
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <NavLink to="/profile">Profile</NavLink>
+      </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <NavLink to="/settings">Settings</NavLink>
       </MenuItem>
@@ -75,11 +77,11 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
   const renderNotifications = () => {
     return (
       <li>
-        <IconButton color="inherit">
-          <Badge badgeContent={4} color="primary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
+        <NavLink to="/my-movies">
+            <Badge badgeContent={Object.keys(user.liked).length} color="primary">
+              <Favorite />
+            </Badge>
+        </NavLink>
       </li>
     )
   }
@@ -99,9 +101,9 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
 
       <Hidden smDown className="app-header-nav" implementation="css">
         {user && <span>Hello {user.username}</span>}
-        {user && <NavLink to="/dashboard">Dashboard</NavLink>}
-        {user && <NavLink to="/my-movies">My Movies</NavLink>}
-        <NavLink to="/movies">Movies</NavLink>
+        <NavLink to="/movies" activeClassName="nav-selected">Movies</NavLink>
+        {user && <NavLink to="/my-movies" activeClassName="nav-selected">My Movies</NavLink>}
+        {user && <NavLink to="/profile" activeClassName="nav-selected">Profile</NavLink>}
       </Hidden>
 
       <div className="app-header-search">

@@ -26,9 +26,9 @@ function SideNav(props) {
   const user = useContext(UserContext);
 
   const pages = [
-    {title: 'Dashboard', route: '/dashboard', CmpIcon: DashboardIcon, onlyUser: true}, 
-    {title: 'My Movies', route: '/my-movies', CmpIcon: FavoriteIcon, onlyUser: true},
     {title: 'Movies', route: '/movies', CmpIcon: MovieIcon, onlyUser: false},
+    {title: 'My Movies', route: '/my-movies', CmpIcon: FavoriteIcon, onlyUser: true},
+    {title: 'Profile', route: '/profile', CmpIcon: DashboardIcon, onlyUser: true}, 
   ];
 
   const renderItem = ({title, route, CmpIcon, onlyUser}) => {

@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import {SideNav, AppHeader, LoginModal} from './common'
-import {Dashboard, Movies, MyMovies, Settings, MovieCategory, MovieDetails} from './views'
+import {Profile, Movies, MyMovies, Settings, MovieCategory, MovieDetails} from './views'
 import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'
@@ -66,19 +66,21 @@ function App() {
             </SearchContext.Provider>
             <div className="app-content">
               <Switch>
-                <Route path="/dashboard"><Dashboard  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                <Route path="/profile"><Profile  searchVisibilty={() => setSearchVisibilty(false)}/></Route>
+                
                 <Route exact path="/movies">
                   <Movies searchVisibilty={() => setSearchVisibilty(false)}
                           onToggleLiked={toggleLiked}/>
                 </Route>
-                <Route path="/movies/:id"><MovieCategory searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-                <Route path="/movie/:id">
+
+                <Route path="/movies/:id">
                   <MovieDetails searchVisibilty={() => setSearchVisibilty(false)}
                                 onToggleLiked={toggleLiked}/>
                 </Route>
+                
                 <Route path="/my-movies"><MyMovies searchVisibilty={() => setSearchVisibilty(true)}/></Route>
                 <Route path="/settings"><Settings searchVisibilty={() => setSearchVisibilty(false)}/></Route>
-                <Redirect to='/dashboard' />
+                <Redirect to='/movies' />
               </Switch>
             </div>
 
@@ -97,19 +99,3 @@ function App() {
 }
 
 export default App;
-
-// import logo from './logo.svg';
-/* <img src={logo} className="App-logo" alt="logo" />
-<p>
-  Edit <code>src/App.js</code> and save to reload.
-</p>
-
-
-<a
-  className="App-link"
-  href="https://reactjs.org"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Learn React
-</a> */

@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard'
+import Profile from './Profile'
 import Movies from './Movies'
 import MovieDetails from './MovieDetails'
 import MyMovies from './MyMovies'
@@ -6,7 +6,7 @@ import Settings from './Settings'
 import MovieCategory from './MovieCategory'
 
 export {
-  Dashboard,
+  Profile,
   Movies,
   MyMovies,
   Settings,

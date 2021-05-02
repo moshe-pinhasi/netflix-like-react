@@ -6,7 +6,7 @@ function MovieList({movies, vertical, Actions}) {
   const renderList = () => {
     return movies.map(m => 
       <li className="list-item" key={m.id}>
-        <NavLink to={`/movie/${m.id}`}>
+        <NavLink to={`/movies/${m.id}`}>
           <MovieCard movie={m} />
           {Actions && <div className="list-item-actions"><Actions movie={m} /></div>}
         </NavLink>

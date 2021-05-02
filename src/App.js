@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import {SideNav, AppHeader, LoginModal} from './common'
-import {Profile, Movies, MyMovies, Settings, MovieCategory, MovieDetails} from './views'
+import {Profile, Movies, MyMovies, Settings, MovieDetails} from './views'
 import {storage} from './services/storageService'
 
 import {SearchContext, UserContext} from './context'

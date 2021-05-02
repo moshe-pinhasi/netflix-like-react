@@ -24,7 +24,7 @@ function LoginModal({show, handleClose, handleSubmit}) {
       setError('Username and Password are required!')
       return
     }
-    handleSubmit({username, password})
+    handleSubmit({username, password, liked: []})
   }
   
   const renderInput = (title, value, onChange, type = "text") => {

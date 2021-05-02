@@ -5,6 +5,16 @@
     padding-left: 20px;
   }
 
+  .actions-contianer {
+    margin-top: 20px;
+    display: flex;
+    padding: 0 20px;
+
+    button:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+
   // .list-container {
   //   margin: 20px 0;
 

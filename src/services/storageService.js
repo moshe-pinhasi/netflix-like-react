@@ -2,6 +2,10 @@ const save = (name, data) => {
   localStorage.setItem(name, JSON.stringify(data))
 }
 
+const remove = (name) => {
+  localStorage.removeItem(name)
+}
+
 const load = (name) => {
   const data = localStorage.getItem(name)
   if (!data) return null
@@ -11,5 +15,6 @@ const load = (name) => {
 
 export const storage = {
   save,
-  load
+  load,
+  remove
 }

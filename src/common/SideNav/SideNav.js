@@ -1,6 +1,7 @@
 // https://material-ui.com/components/drawers/
 
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from '../../context';
 
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -22,12 +23,29 @@ import {NavLink} from "react-router-dom";
 import './SideNav.scss';
 
 function SideNav(props) {
+  const user = useContext(UserContext);
 
   const pages = [
-    {title: 'Dashboard', route: '/dashboard', CmpIcon: DashboardIcon}, 
-    {title: 'All Movies', route: '/movies', CmpIcon: MovieIcon}, 
-    {title: 'My Movies', route: '/my-movies', CmpIcon: FavoriteIcon}
+    {title: 'Dashboard', route: '/dashboard', CmpIcon: DashboardIcon, onlyUser: true}, 
+    {title: 'My Movies', route: '/my-movies', CmpIcon: FavoriteIcon, onlyUser: true},
+    {title: 'Movies', route: '/movies', CmpIcon: MovieIcon, onlyUser: false},
   ];
+
+  const renderItem = ({title, route, CmpIcon, onlyUser}) => {
+    if (!user && onlyUser) return ""
+
+    return (
+      <ListItem button key={title}>
+        <NavLink to={route} 
+          onClick={props.closeDrawer}
+          className='side-nav-link side-nav-color' 
+          activeClassName="side-nav-link-selected">
+          <ListItemIcon><CmpIcon classes={{root: "side-nav-color"}}/></ListItemIcon>
+          <ListItemText primary={title} />
+        </NavLink>
+      </ListItem>
+    )
+  }
 
   const drawer = (
     <div>
@@ -38,20 +56,10 @@ function SideNav(props) {
       </div>
       <Divider />
       <List>
-        {pages.map(({title, route, CmpIcon}) => (
-          <ListItem button key={title}>
-            <NavLink to={route} 
-              onClick={props.closeDrawer}
-              className='side-nav-link side-nav-color' 
-              activeClassName="side-nav-link-selected">
-              <ListItemIcon><CmpIcon classes={{root: "side-nav-color"}}/></ListItemIcon>
-              <ListItemText primary={title} />
-            </NavLink>
-          </ListItem>
-        ))}
+        {pages.map((item) => renderItem(item))}
       </List>
-      <Divider />
-      <List>
+      {user && <Divider />}
+      {user && <List>
         {[{title: 'Settings', route: "/settings", CmpIcon: SettingsIcon}]
           .map(({title, route, CmpIcon}) => (
           <ListItem button key={title}>
@@ -64,7 +72,7 @@ function SideNav(props) {
             </NavLink>
           </ListItem>
         ))}
-      </List>
+      </List>}
     </div>
   );
 

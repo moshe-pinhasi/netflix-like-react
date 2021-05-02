@@ -23,7 +23,7 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
-  const renderLogin = <li><Button color="primary" variant="contained" onClick={handleLogin}>login</Button></li>
+  const renderLogin = <li><Button color="primary" variant="contained" onClick={handleLogin}>Login</Button></li>
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,9 +46,12 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
       className="user-menu"
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <NavLink to="/settings">Settings</NavLink>
+      </MenuItem>
+
+      <MenuItem onClick={handleMenuClose}>
+        <NavLink to="/movies" onClick={handleLogout}>Logout</NavLink>
       </MenuItem>
     </Menu>
   )
@@ -95,7 +98,7 @@ function AppHeader({toggleDrawer, handleLogin, handleLogout}){
       </Hidden>
 
       <Hidden smDown className="app-header-nav" implementation="css">
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        {user && <NavLink to="/dashboard">Dashboard</NavLink>}
         {user && <NavLink to="/my-movies">My Movies</NavLink>}
         <NavLink to="/movies">Movies</NavLink>
       </Hidden>

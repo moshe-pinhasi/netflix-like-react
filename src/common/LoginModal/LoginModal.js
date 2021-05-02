@@ -19,14 +19,14 @@ function LoginModal({show, handleClose, handleSubmit}) {
   const submit = (e) => {
     e.preventDefault()
     setError('')
-
+    
     if (!username || !password) {
       setError('Username and Password are required!')
       return
     }
     handleSubmit({username, password})
   }
-
+  
   const renderInput = (title, value, onChange, type = "text") => {
     const change = (event) => {
       setError('')
@@ -36,7 +36,11 @@ function LoginModal({show, handleClose, handleSubmit}) {
     return (
       <FormControl>
         <InputLabel htmlFor={title}>Enter your {title}</InputLabel>
-        <Input id={title} type={type} value={value} onChange={change} aria-describedby="my-helper-text" />
+        <Input id={title} 
+               type={type} 
+               value={value} 
+               onChange={change} 
+               aria-describedby="my-helper-text" />
       </FormControl>
     )
   }
@@ -46,7 +50,7 @@ function LoginModal({show, handleClose, handleSubmit}) {
       <h2>Login</h2>
       <form>
         <div className="form-content">
-          {renderInput('username', username, setUsername)}
+          {renderInput('username', username, setUsername, 'text', true)}
           {renderInput('password', password, setPassword, 'password')}
           <FormControl>
             <FormHelperText>{error}</FormHelperText>
@@ -54,7 +58,7 @@ function LoginModal({show, handleClose, handleSubmit}) {
         </div>
         
         <div className="form-actions-container">
-          <Button color="primary" variant="contained" onClick={submit}>Login</Button>
+          <Button type="submit" color="primary" variant="contained" onClick={submit}>Login</Button>
         </div>
       </form>
     </div>

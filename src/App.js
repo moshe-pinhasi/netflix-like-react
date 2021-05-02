@@ -17,14 +17,15 @@ import {ThemeProvider} from '@material-ui/core/styles';
 
 import './App.scss';
 
-const loggedInUser = storage.load('user')
-
 function App() {
   
   const [state, setState] = useState({
     mobileOpen: false,
   });
-  
+  const [showSearch, setSearchVisibilty] = useState(false);
+  const [user, setUser] = useState(() => storage.load('user')); // lazy initialization
+  const [showLoginModal, openLoginModel] = useState(false)
+
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -32,11 +33,6 @@ function App() {
     
     setState({ ...state, mobileOpen: open });
   };
-
-  const [showSearch, setSearchVisibilty] = useState(false);
-  const [user, setUser] = useState(loggedInUser);
-
-  const [showLoginModal, openLoginModel] = useState(false)
 
   const onLogin = (user) => {
     setUser(user)
@@ -46,7 +42,7 @@ function App() {
 
   const onLogout = () => {
     setUser(null)
-    storage.save('user', null)
+    storage.remove('user')
   }
 
   return (
